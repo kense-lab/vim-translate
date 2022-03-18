@@ -26,7 +26,12 @@ function! translate#visual(source_target) range abort
   let l:regtext = getreg('a')
   silent! normal! gv"ay
 
-  let l:translation = s:translate(a:source_target, @a)
+  let ss = @a
+  let ss = substitute(l:ss, "\n//", " ", "g")
+  let ss = substitute(l:ss, "/", "", "g")
+  let ss = substitute(l:ss, "*", "", "g")
+
+  let l:translation = s:translate(a:source_target, l:ss)
   call translate#open_trans_buf(l:translation)
 
   call setreg('a', l:regtext, l:regtype)
