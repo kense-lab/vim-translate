@@ -30,6 +30,7 @@ function! translate#visual(source_target) range abort
   let ss = substitute(l:ss, "\n//", " ", "g")
   let ss = substitute(l:ss, "/", "", "g")
   let ss = substitute(l:ss, "*", "", "g")
+  let ss = substitute(l:ss, "_", " ", "g")
 
   let l:translation = s:translate(a:source_target, l:ss)
   call translate#open_trans_buf(l:translation)
